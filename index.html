@@ -209,7 +209,7 @@ body{background:var(--bg)}
 const s4=[['AFRMM - Marinha Mercante',1593.44,2720.57],['Pacote Braskarne',0,21766.31],['Armazenagem 1º período (22/06 a 06/07)',6754.51,976.56],['Armazenagem 2º período (07/07 a 19/08)',0,18415.07],['Armazenagem 3º período (20/08 a 10/09)',0,18415.07],['Despachante',1700,2575],['SDA',940,0],['Correios',50,50],['Lavagem de CTNR',750,112.50],['Taxa madeira',200,0]];
 const s3=[['Liberação de BL',650,397.39],['Capatazia / THC',3600,2760],['Desconsolidação',535.60,278.18],['IOF',0,1112.69],['Drop off / Damage Fee',120,1398.81],['Bunker',155,119.22],['Logistic Fee',250,715.30],['ISPS no destino',267.80,635.82]];
 const imp=[['Imposto de Importação (I.I.)',65786.87,33481.95],['IPI',10690.37,10156.19],['PIS',5526.10,5859.34],['COFINS',25393.73,26925.07],['Taxa Siscomex',214.50,154.23]];
-const T=[['Produto (FOB)',246118.50,247997.60],['Frete internacional',16068,31791],['Seguro',1642.15,1428.32],['Impostos de importação',107611.57,76576.79,imp],['ICMS',10084.55,9630.64],['Taxas de frete marítimo e terminal',5578.40,7417.39,s3],['Desembaraço aduaneiro',11987.95,65031.08,s4],['Frete terrestre (porto → cliente)',49050,42820]];
+const T=[['Produto (FOB)',246118.50,247997.60],['Frete internacional',16068,31791],['Seguro',1642.15,1428.32],['Impostos de importação',107611.57,76576.79,imp],['ICMS',10084.55,9630.64],['Taxas de frete marítimo',5578.40,7417.39,s3],['Desembaraço aduaneiro',11987.95,65031.08,s4],['Frete terrestre (porto → cliente)',49050,42820]];
 const cats=T.map(t=>t[0]),apr=T.map(t=>t[1]),rea=T.map(t=>t[2]);
 const totalApr=448141.12,totalReal=482692.82,qtd=81000;
 const unitApr=apr.map(v=>v/qtd),unitRea=rea.map(v=>v/qtd);
