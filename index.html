@@ -94,6 +94,11 @@ body{background:var(--bg);color:var(--text);font-family:'Poppins',sans-serif;min
 .fx-badge.up{color:var(--red)}
 .fx-badge.down{color:var(--green)}
 @media(max-width:600px){.fx-grid{gap:8px}.fx-item{min-width:104px;padding:8px 12px}}
+@keyframes tabPulse{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(37,99,235,0)}50%{transform:scale(1.07);box-shadow:0 0 0 4px rgba(37,99,235,.18);border-color:var(--blue);color:var(--blue)}}
+.tabs:not(.seen) .tab:not(.active){animation:tabPulse 2s ease-in-out infinite}
+.tabs:not(.seen) .tab:nth-child(2){animation-delay:.3s}.tabs:not(.seen) .tab:nth-child(3){animation-delay:.6s}
+.tab:hover:not(.active){animation:none!important}
+@media(prefers-reduced-motion:reduce){.tabs .tab{animation:none!important}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:600px){.main{padding:20px 16px}.hero{padding:28px 20px}.unit-card-grid{grid-template-columns:1fr}}
 
@@ -250,7 +255,7 @@ const pie=(id,d,unit)=>{const tot=d.reduce((a,b)=>a+b,0);new Chart(id,{type:'dou
 pie(pieChart,rea,false);pie(unitPieApr,unitApr,true);pie(unitPieRea,unitRea,true);
 new Chart(unitBarChart,{type:'bar',data:{labels:cats,datasets:dsets(unitApr,unitRea)},options:{...base,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>' R$ '+c.parsed.y.toFixed(4)+'/kg'}}},scales:{x:xo,y:yo(v=>'R$ '+v.toFixed(2))}}});
 new Chart(dChart,{type:'bar',data:{labels:s4.map(x=>x[0].replace(/ \(.*\)/,'')),datasets:dsets(s4.map(x=>x[1]),s4.map(x=>x[2]))},options:{...base,plugins:{legend:{display:true,position:'bottom',labels:{color:tc,font:{family:ff,size:11}}},tooltip:{callbacks:{label:c=>' '+c.dataset.label+': '+fmtBRL(c.parsed.y)}}},scales:{x:xo,y:yo(fmtK)}}});
-function showTab(t,e){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));document.getElementById('tab-'+t).classList.add('active');e.target.classList.add('active')}
+function showTab(t,e){document.querySelector('.tabs').classList.add('seen');document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));document.getElementById('tab-'+t).classList.add('active');e.target.classList.add('active')}
 </script>
 </body>
 </html>
