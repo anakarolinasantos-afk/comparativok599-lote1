@@ -186,8 +186,6 @@ body{background:var(--bg)}
     </div>
     <div class="h2">Despesas de desembaraço aduaneiro <span class="tbl-sub">seção 4</span></div>
     <div class="table-wrap" id="tblDesemb"></div>
-    <div class="h2">Taxas de frete marítimo<span class="tbl-sub">seção 3 · Drop off e Damage Fee somados para comparar</span></div>
-    <div class="table-wrap" id="tblMar"></div>
     <div class="charts-grid"><div class="chart-wrap full"><div class="chart-title">Desembaraço por item — estudo x fechamento</div>
       <div style="position:relative;height:340px"><canvas id="dChart"></canvas></div></div></div>
   </div>
@@ -197,15 +195,6 @@ body{background:var(--bg)}
       <div class="unit-card blue"><div class="unit-card-label">Custo unitário estudo</div><div class="unit-card-val">R$ 5,53</div><div class="unit-card-sub">por kg - total R$ 448.141,12</div></div>
       <div class="unit-card orange"><div class="unit-card-label">Custo unitário fechamento</div><div class="unit-card-val">R$ 5,96</div><div class="unit-card-sub">por kg - total R$ 482.692,82</div></div>
       <div class="unit-card red"><div class="unit-card-label">Variação unitária</div><div class="unit-card-val">+R$ 0,43</div><div class="unit-card-sub">+7,71% por kg - +R$ 34.551,70 no total</div></div>
-    </div>
-    <div class="unit-product-info" style="display:block">
-      <div class="fx-panel-title" style="margin-bottom:12px">Líquido de créditos (Lucro Real) <span class="fx-note">· base 81.000 kg</span></div>
-      <div class="fx-grid">
-        <div class="fx-item ref"><span class="fx-label">Custo líquido estudo</span><span class="fx-val">R$ 4,89/kg</span><span class="fx-label">R$ 396.446,37</span></div>
-        <div class="fx-item"><span class="fx-label">Custo líquido fechamento</span><span class="fx-val">R$ 5,31/kg</span><span class="fx-label">R$ 430.121,57</span></div>
-        <div class="fx-item"><span class="fx-label">Créditos estudo</span><span class="fx-val">R$ 51.694,75</span><span class="fx-label">IPI + PIS/COFINS + ICMS</span></div>
-        <div class="fx-item"><span class="fx-label">Créditos fechamento</span><span class="fx-val">R$ 52.571,24</span><span class="fx-label">IPI + PIS/COFINS + ICMS</span></div>
-      </div>
     </div>
     <div class="charts-grid">
       <div class="chart-wrap full"><div class="chart-title">Custo unitário (R$/kg) por categoria</div>
@@ -247,7 +236,7 @@ function build(el,rows,expand){
 }
 build(document.getElementById('mainTable'),T,true);
 add(document.getElementById('mainTable'),'table-row total',totalRow(totalApr,totalReal));
-[['tblDesemb',s4,11987.95,65031.08],['tblMar',s3,5578.40,7417.39]].forEach(([id,rows,a,r])=>{const el=document.getElementById(id);el.innerHTML=head;build(el,rows,false);add(el,'table-row total',totalRow(a,r))});
+[['tblDesemb',s4,11987.95,65031.08]].forEach(([id,rows,a,r])=>{const el=document.getElementById(id);el.innerHTML=head;build(el,rows,false);add(el,'table-row total',totalRow(a,r))});
 setTimeout(()=>document.querySelectorAll('.bar-fill').forEach(b=>b.style.width=b.dataset.pct+'%'),300);
 const xo={ticks:{color:tc,font:{family:ff,size:10},maxRotation:30},grid:{color:gc}};
 const yo=cb=>({ticks:{color:tc,font:{family:ff,size:11},callback:cb},grid:{color:gc}});
