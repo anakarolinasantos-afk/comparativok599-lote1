@@ -103,8 +103,8 @@ body{background:var(--bg);color:var(--text);font-family:'Poppins',sans-serif;min
 @media(max-width:600px){.main{padding:20px 16px}.hero{padding:28px 20px}.unit-card-grid{grid-template-columns:1fr}}
 
 :root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121212;--surface:#1c1c1c;--surface2:#262626;--border:rgba(255,255,255,.09);--border2:rgba(255,255,255,.15);--text:#f2f2f2;--muted:#9a9a9a;--muted2:#c2c2c2;--blue-bg:#16213a;--green-bg:#10281e;--red-bg:#2e1616;}}
-:root[data-theme="dark"]{--bg:#121212;--surface:#1c1c1c;--surface2:#262626;--border:rgba(255,255,255,.09);--border2:rgba(255,255,255,.15);--text:#f2f2f2;--muted:#9a9a9a;--muted2:#c2c2c2;--blue-bg:#16213a;--green-bg:#10281e;--red-bg:#2e1616;}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--purple-bg:#221a3a;--purple:#a78bfa;--bg:#121212;--surface:#1c1c1c;--surface2:#262626;--border:rgba(255,255,255,.09);--border2:rgba(255,255,255,.15);--text:#f2f2f2;--muted:#9a9a9a;--muted2:#c2c2c2;--blue-bg:#16213a;--green-bg:#10281e;--red-bg:#2e1616;}}
+:root[data-theme="dark"]{--purple-bg:#221a3a;--purple:#a78bfa;--bg:#121212;--surface:#1c1c1c;--surface2:#262626;--border:rgba(255,255,255,.09);--border2:rgba(255,255,255,.15);--text:#f2f2f2;--muted:#9a9a9a;--muted2:#c2c2c2;--blue-bg:#16213a;--green-bg:#10281e;--red-bg:#2e1616;}
 body{background:var(--bg)}
 .hero-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.hero-badges .hero-badge{margin-top:0}
 .hero-badge.info{background:var(--blue-bg);border-color:var(--blue-border);color:var(--blue)}
@@ -118,6 +118,28 @@ body{background:var(--bg)}
 .h2{font-size:13px;font-weight:700;margin:6px 0 12px}
 .tbl-sub{font-size:11.5px;color:var(--muted);font-weight:400;margin-left:6px}
 @media(max-width:700px){.notes{grid-template-columns:1fr}.table-head,.table-row,.table-row.sub{grid-template-columns:1.6fr 1fr 1fr;padding-left:14px;padding-right:14px}.table-head span:nth-child(n+4),.table-row>span:nth-child(n+4){display:none}}
+
+.calc-wrap{background:var(--surface);border:1.5px solid var(--border2);border-radius:16px;overflow:hidden;margin-bottom:28px}
+.calc-scroll{overflow-x:auto}
+.calc{width:100%;border-collapse:collapse;font-size:12px;min-width:640px}
+.calc th{background:var(--surface2);font-size:10px;font-weight:700;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;padding:12px 14px;text-align:right;border-bottom:1px solid var(--border2);white-space:nowrap}
+.calc td{padding:11px 14px;text-align:right;border-bottom:1px solid var(--border);color:var(--muted2);white-space:nowrap}
+.calc th:first-child,.calc td:first-child{text-align:left}
+.calc td:first-child{font-weight:600;color:var(--text);white-space:normal}
+.calc td.hi{color:var(--text);font-weight:600}
+.calc tr.sum td{font-weight:600;color:var(--text)}
+.calc td.lbl{text-align:right}
+.calc tr.pk td{background:var(--purple-bg);color:var(--purple);font-weight:700;font-size:13.5px;padding-top:15px;padding-bottom:15px;border-bottom:none;border-top:1.5px solid var(--purple-border)}
+.calc tr.pk td .pk-sub{display:block;font-size:11px;font-weight:400;color:var(--muted2);margin-top:2px}
+.calc tr.rat td{background:var(--purple-bg);font-weight:500;color:var(--text);padding-top:8px;padding-bottom:8px;border-bottom:none}
+.calc tr.rat td.lbl{padding-right:14px}
+.calc tr.rat.last td{border-bottom:1.5px solid var(--purple-border);padding-bottom:13px}
+.calc tr.rat b{font-weight:700}
+.calc tr.lote td{font-weight:700;color:var(--text)}
+.calc tr.grand td{background:var(--surface2);font-weight:700;color:var(--text);border-bottom:none}
+.calc-note{padding:14px 18px;font-size:11.5px;line-height:1.6;color:var(--muted2);border-top:1px solid var(--border2)}
+.calc-note b{color:var(--text)}
+.formula{display:block;font-size:10.5px;font-weight:400;color:var(--muted);margin-top:2px}
 </style>
 </head>
 <body>
@@ -187,10 +209,28 @@ body{background:var(--bg)}
       <div class="kpi-card blue"><div class="kpi-label">Desembaraço estudo</div><div class="kpi-val">R$ 11.988</div><div class="kpi-sub">Seção 4 do estudo</div></div>
       <div class="kpi-card red"><div class="kpi-label">Desembaraço fechamento</div><div class="kpi-val">R$ 65.031</div><div class="kpi-sub">+R$ 53.043 (+442,5%)</div></div>
       <div class="kpi-card orange"><div class="kpi-label">Armazenagem (3 períodos)</div><div class="kpi-val">R$ 37.807</div><div class="kpi-sub">58,1% do desembaraço · 22/06 a 10/09/2026</div></div>
-      <div class="kpi-card purple"><div class="kpi-label">Pacote Braskarne</div><div class="kpi-val">R$ 21.766</div><div class="kpi-sub">33,5% do desembaraço · não previsto</div></div>
+      <div class="kpi-card purple"><div class="kpi-label">Pacote Braskarne</div><div class="kpi-val">R$ 21.766</div><div class="kpi-sub">75% do pacote de R$ 29.021,76 (carga toda) · não previsto</div></div>
     </div>
     <div class="h2">Despesas de desembaraço aduaneiro <span class="tbl-sub">seção 4</span></div>
     <div class="table-wrap" id="tblDesemb"></div>
+    <div class="h2">Memória de cálculo <span class="tbl-sub">armazenagem em entreposto</span></div>
+    <div class="calc-wrap">
+      <div class="calc-scroll"><table class="calc">
+        <thead><tr><th>Período</th><th>CIF</th><th>Alíquota</th><th>Data início</th><th>Data fim</th><th>Dias</th><th>Valor cobrado</th></tr></thead>
+        <tbody>
+          <tr><td>1º período – 15 dias</td><td>R$ 279.016,28</td><td>0,35%</td><td>22/06/2026</td><td>06/07/2026</td><td>15</td><td class="hi">R$ 976,56</td></tr>
+          <tr><td>2º período – 16º ao 59º dia (ao dia)</td><td>R$ 279.016,28</td><td>0,15%</td><td>07/07/2026</td><td>19/08/2026</td><td>44</td><td class="hi">R$ 18.415,07</td></tr>
+          <tr><td>3º período – a partir do 60º dia (ao dia)</td><td>R$ 279.016,28</td><td>0,30%</td><td>20/08/2026</td><td>10/09/2026</td><td>22</td><td class="hi">R$ 18.415,07</td></tr>
+          <tr class="sum"><td colspan="6" class="lbl">Total armazenagem</td><td>R$ 37.806,70</td></tr>
+          <tr class="pk"><td colspan="6" class="lbl">Pacote de Serviços Braskarne<span class="pk-sub">valor cobrado para toda a carga · 108 t</span></td><td>R$ 29.021,76</td></tr>
+          <tr class="rat"><td colspan="6" class="lbl">1º lote · 81 t · <b>75%</b> do pacote</td><td><b>R$ 21.766,31</b></td></tr>
+          <tr class="rat last"><td colspan="6" class="lbl">2º lote · 27 t · <b>25%</b> do pacote</td><td>R$ 7.255,45</td></tr>
+          <tr class="lote"><td colspan="6" class="lbl">Total deste relatório · 1º lote (armazenagem + 75% do pacote)</td><td>R$ 59.573,01</td></tr>
+          <tr class="grand"><td colspan="6" class="lbl">Total geral (carga toda)</td><td>R$ 66.828,45</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
     <div class="charts-grid"><div class="chart-wrap full"><div class="chart-title">Desembaraço por item — estudo x fechamento</div>
       <div style="position:relative;height:340px"><canvas id="dChart"></canvas></div></div></div>
   </div>
@@ -211,7 +251,7 @@ body{background:var(--bg)}
   </div>
 </div>
 <script>
-const s4=[['AFRMM - Marinha Mercante',1593.44,2720.57],['Pacote Braskarne',0,21766.31],['Armazenagem 1º período (22/06 a 06/07)',6754.51,976.56],['Armazenagem 2º período (07/07 a 19/08)',0,18415.07],['Armazenagem 3º período (20/08 a 10/09)',0,18415.07],['Despachante',1700,2575],['SDA',940,0],['Correios',50,50],['Lavagem de CTNR',750,112.50],['Taxa madeira',200,0]];
+const s4=[['AFRMM - Marinha Mercante',1593.44,2720.57],['Pacote Braskarne (75% do pacote)',0,21766.31],['Armazenagem 1º período (22/06 a 06/07)',6754.51,976.56],['Armazenagem 2º período (07/07 a 19/08)',0,18415.07],['Armazenagem 3º período (20/08 a 10/09)',0,18415.07],['Despachante e taxas',2890,2625],['Lavagem de CTNR',750,112.50]];
 const s3=[['Liberação de BL',650,397.39],['Capatazia / THC',3600,2760],['Desconsolidação',535.60,278.18],['IOF',0,1112.69],['Drop off / Damage Fee',120,1398.81],['Bunker',155,119.22],['Logistic Fee',250,715.30],['ISPS no destino',267.80,635.82]];
 const imp=[['Imposto de Importação (I.I.)',65786.87,33481.95],['IPI',10690.37,10156.19],['PIS',5526.10,5859.34],['COFINS',25393.73,26925.07],['Taxa Siscomex',214.50,154.23]];
 const T=[['Produto (FOB)',246118.50,247997.60],['Frete internacional',16068,31791],['Seguro',1642.15,1428.32],['Impostos de importação',107611.57,76576.79,imp],['ICMS',10084.55,9630.64],['Taxas de frete marítimo',5578.40,7417.39,s3],['Desembaraço aduaneiro',11987.95,65031.08,s4],['Frete terrestre (porto → cliente)',49050,42820]];
